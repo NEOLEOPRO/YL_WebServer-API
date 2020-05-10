@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h1 class="login_title mb-3">List of Departaments</h1>
+
+<div class="mb-2">
+    <a href="/" class=""><button class="btn btn-secondary">К заданием</button></a>
+    {% if current_user.is_authenticated %}<a href="/adddepartment" class=""><button class="btn btn-secondary">Добавить департамент</button></a>{% endif %}
+</div>
+
+
+{% for dep in departments %}
+    <div class="job mb-4">
+        <h4>Департамент {{dep.id}}</h4>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Шеф</th>
+                <th scope="col">Члены</th>
+                <th scope="col">E-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ dep.title }}</td>
+                <td>{{ dep.user.name }} {{ dep.user.surname }}</td>
+                <td>{{ dep.members }}</td>
+                <td>{{ dep.email }}</td>
+              </tr>
+            </tbody>
+        </table>
+        {% if current_user.is_authenticated and (current_user == dep.user or current_user.id == 1) %}
+            <div>
+            <a href="/departments/{{ dep.id }}"><button class="btn btn-warning">Редактировать</button></a>
+            <a href="/delete_department/{{ dep.id }}"><button class="btn btn-danger">Удалить</button></a>
+            </div>
+        {% endif %}
+        
+    </div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

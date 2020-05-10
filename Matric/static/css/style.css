@@ -1,0 +1,21 @@
+h4 {
+    color: #CCCCCC;
+}
+
+.auto_answer ul{
+    list-style: none;
+    padding-top: 10px;
+    
+}
+.auto_answer ul li {
+    font-size: 22px;
+}
+
+.login_title:before {
+    content:'';
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 50px;
+    background: url('https://yastatic.net/s3/lyceum/content/images/second-year/web/MARS-2-7.png');
+}
