@@ -1,12 +1,16 @@
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+
 h4 {
     color: #CCCCCC;
 }
 
+body { background: url('/static/img/image_56656e8f2835e0.54848351.jpg'); }
+
 .auto_answer ul{
     list-style: none;
     padding-top: 10px;
-    
 }
+
 .auto_answer ul li {
     font-size: 22px;
 }
@@ -17,5 +21,16 @@ h4 {
     position: relative;
     width: 150px;
     height: 50px;
-    background: url('https://yastatic.net/s3/lyceum/content/images/second-year/web/MARS-2-7.png');
+    background: url('/static/img/image_56656e8f2835e0.54848351.jpg');
 }
+
+
+        body { background: url('/static/img/image_56656e8f2835e0.54848351.jpg'); }
+        .login_title:before {
+        content:'';
+        display: inline-block;
+        position: relative;
+        width: 100px;
+        height: 50px;
+        background: url('/static/img/image_56656e8f2835e0.54848351.jpg');
+        }

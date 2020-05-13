@@ -4,8 +4,8 @@
 <div class="container">
 <div class="row">
 <div class="col-12">
-<h1 class="login_title">Register form</h1>
-<form action="" method="post" novalidate>
+<h1 class="0form">Регистрация</h1>
+<form class="aform" action="" method="post" novalidate>
     {{ form.csrf_token }}
     {{ form.hidden_tag() }}
     <p>
@@ -57,33 +57,6 @@
         {{ form.age.label }}<br>
         {{ form.age(class="form-control") }}
         {% for error in form.age.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.position.label }}<br>
-        {{ form.position(class="form-control") }}
-        {% for error in form.position.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.specialty.label }}<br>
-        {{ form.specialty(class="form-control") }}
-        {% for error in form.specialty.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.address.label }}<br>
-        {{ form.address(class="form-control") }}
-        {% for error in form.address.errors %}
             <p class="alert alert-danger" role="alert">
                 {{ error }}
             </p>
