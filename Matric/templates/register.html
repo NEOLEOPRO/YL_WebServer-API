@@ -54,9 +54,27 @@
         {% endfor %}
     </p>
     <p>
-        {{ form.age.label }}<br>
-        {{ form.age(class="form-control") }}
-        {% for error in form.age.errors %}
+        {{ form.datep.label }}<br>
+        {{ form.datep(class="form-control") }}
+        {% for error in form.datep.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.monthp.label }}<br>
+        {{ form.monthp(class="form-control") }}
+        {% for error in form.monthp.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.agep.label }}<br>
+        {{ form.agep(class="form-control") }}
+        {% for error in form.agep.errors %}
             <p class="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -64,8 +82,8 @@
     </p>
     {{message}}
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-</form>
 
+</form>
 </div>
 </div>
 </div>
