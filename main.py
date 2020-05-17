@@ -7,7 +7,6 @@ import os
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired
-from werkzeug.security import generate_password_hash, check_password_hash
 
 from data import db_session
 from data.users import User
