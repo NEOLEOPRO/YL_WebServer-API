@@ -1,14 +1,12 @@
-from flask import Flask, url_for, request, render_template, redirect, make_response, abort
+from flask import Flask, request, render_template, redirect, make_response
 from flask import session as flask_session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 import os
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateTimeField, IntegerField
-from wtforms.fields.html5 import EmailField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired
-
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from data import db_session
@@ -53,19 +51,36 @@ class LoginForm(FlaskForm):
 
 
 class MatricForm(FlaskForm):
-    datee = IntegerField('Дата рождения', validators=[DataRequired()])
-    monthe = IntegerField('Месяц рождения', validators=[DataRequired()])
-    agee = IntegerField('Год рождения', validators=[DataRequired()])
-    temp = StringField('Характер\n', validators=[DataRequired()])
-    power = StringField('Энергия\n', validators=[DataRequired()])
-    intr = StringField('Интерес\n', validators=[DataRequired()])
-    heal = StringField('Здоровье\n', validators=[DataRequired()])
-    logic = StringField('Логика\n', validators=[DataRequired()])
-    work = StringField('Труд\n', validators=[DataRequired()])
-    luck = StringField('Удача\n', validators=[DataRequired()])
-    debt = StringField('Долг\n', validators=[DataRequired()])
-    mind = StringField('Память\n', validators=[DataRequired()])
+    datee = IntegerField('', validators=[DataRequired()])
+    monthe = IntegerField('', validators=[DataRequired()])
+    agee = IntegerField('', validators=[DataRequired()])
+    temp = StringField('Характер', validators=[DataRequired()])
+    power = StringField('Энергия', validators=[DataRequired()])
+    intr = StringField('Интерес', validators=[DataRequired()])
+    heal = StringField('Здоровье', validators=[DataRequired()])
+    logic = StringField('Логика', validators=[DataRequired()])
+    work = StringField('Труд', validators=[DataRequired()])
+    luck = StringField('Удача', validators=[DataRequired()])
+    debt = StringField('Долг', validators=[DataRequired()])
+    mind = StringField('Память', validators=[DataRequired()])
     submit = SubmitField('Рассчитать')
+
+
+def getmatric(d, m, y):
+    a = d // 10 + d % 10 + m // 10 + m % 10 + y % 10 + (y // 10) % 10 + (y // 10) // 10 % 10 + (
+                y // 10) // 10 // 10 % 10
+    b = a // 10 + a % 10
+    c = a - 2 * (d // 10 + d * (d // 10 == 0))
+    e = c // 10 + c % 10
+    s = ''.join([str(d), str(m), str(y), str(a), str(b), str(c), str(e)])
+    print(s)
+    self = [s.count('1') * '1', s.count('2') * '2', s.count('3') * '3', s.count('4') * '4', s.count('5') * '5',
+            s.count('6') * '6', s.count('7') * '7', s.count('8') * '8', s.count('9') * '9']
+    for p in range(len(self)):
+        if not self[p]:
+            self[p] = 'Пусто'
+        self[p] = '[' + self[p] + ']'
+    return self
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -113,35 +128,30 @@ def logout():
     return redirect("/")
     
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
     form = MatricForm()
     return render_template("index.html", title="Нумерология", form=form)
 
 
-@app.route("/matric")
-@login_required
+@app.route("/matric", methods=['GET', 'POST'])
 def matric():
     form = MatricForm()
-    d = current_user.datep
-    m = current_user.monthp
-    y = current_user.agep
-    a = d // 10 + d % 10 + m // 10 + m % 10 + y % 10 + (y // 10) % 10 + (y // 10) // 10 % 10 + (y // 10) // 10 // 10 % 10
-    b = a // 10 + a % 10
-    c = a - 2 * (d // 10 + d * (d // 10 == 0))
-    e = c // 10 + c % 10
-    s = ''.join([str(d), str(m), str(y), str(a), str(b), str(c), str(e)])
-    print(s)
-    form.temp = s.count('1') * '1'
-    form.power = s.count('2') * '2'
-    form.intr = s.count('3') * '3'
-    form.heal = s.count('4') * '4'
-    form.logic = s.count('5') * '5'
-    form.work = s.count('6') * '6'
-    form.luck = s.count('7') * '7'
-    form.debt = s.count('8') * '8'
-    form.mind = s.count('9') * '9'
-    return render_template("index.html", title="Нумерология", form=form)
+    self = getmatric(current_user.datep, current_user.monthp, current_user.agep)
+    return render_template("index.html", title="Нумерология", form=form, temp=self[0], power=self[1], intr=self[2],
+                           heal=self[3], logic=self[4], work=self[5], luck=self[6], debt=self[7], mind=self[8])
+
+
+@app.route("/matricnew", methods=['GET', 'POST'])
+def matricnew():
+    form = MatricForm()
+    try:
+        self = getmatric(form.datee.data, form.monthe.data, form.agee.data)
+    except:
+        return render_template('index.html', title='Нумерология', form=form,
+                               message="Пожалуйста, заполните поля в правильно")
+    return render_template("index.html", title="Нумерология", form=form, temp=self[0], power=self[1], intr=self[2],
+                        heal=self[3], logic=self[4], work=self[5], luck=self[6], debt=self[7], mind=self[8])
 
 
 @app.route("/cookie_test")
@@ -169,4 +179,6 @@ def session_test():
 
 
 if __name__ == '__main__':
-    app.run(port=8000, host='127.0.0.1')
+    # port = int(os.environ.get("PORT", 5000))
+    # app.run(host='0.0.0.0', port=port)
+    app.run(port=8080, host='127.0.0.1')

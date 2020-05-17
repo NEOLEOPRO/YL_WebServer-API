@@ -6,55 +6,71 @@
 <div class="col-12">
 <h1 class="login_title mb-3">Расчитайте свою матрицу!</h1>
     <div class="bform">
-        <label for="classSelect">Дата рождения</label>
-        <select class="" id="dateSelect" name="datep">
-            <option>Дата</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-        <select class="" id="classSelect" name="monthp">
-            <option>Месяц</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-        </select>
+        <h4 class="login_title mb-3">Дата рождения(дд мм гггг):</h4>
     </div>
+    <form action="/matricnew" method="post">
+        <p class="form-inline" >
+            {{ form.datee(class="form-control") }}
+            {{ form.monthe(class="form-control") }}
+            {{ form.agee(class="form-control") }}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </form>
+    <div class="redform">{{ message }}</div><br>
+    {% if not current_user.is_authenticated %}
+    <div class="bform">
+        <label>Вы можете авторизироваться, чтобы получить характеристику по персональной матрице!</label> <br>
+    </div>
+    {% endif %}
     <table class="table">
         <tbody>
         <tr>
-            <td>{{ form.temp.label }}</td>
-            <td>{{ form.heal.label }}</td>
-            <td>{{ form.luck.label }}</td>
-            <td>аааааа</td>
+            <td>
+                {{ form.temp.label }}<br>
+                {{ temp }}
+            </td>
+            <td>
+                {{ form.heal.label }}<br>
+                {{ heal }}
+            </td>
+            <td>
+                {{ form.luck.label }}<br>
+                {{ luck }}
+            </td>
         </tr>
         <tr>
-            <td>ааа</td>
-            <td>ааааа</td>
-            <td>аааа</td>
+            <td>
+                {{ form.power.label }}<br>
+                {{ power }}
+            </td>
+            <td>
+                {{ form.logic.label }}<br>
+                {{ logic }}
+            </td>
+            <td>
+                {{ form.debt.label }}<br>
+                {{ debt }}
+            </td>
         </tr>
         <tr>
-            <td>ааа</td>
-            <td>ааааа</td>
-            <td>аааа</td>
-            <td>аааа</td>
+            <td>
+                {{ form.intr.label }}<br>
+                {{ intr }}
+            </td>
+            <td>
+                {{ form.work.label }}<br>
+                {{ work }}
+            </td>
+            <td>
+                {{ form.mind.label }}<br>
+                {{ mind }}
+            </td>
         </tr>
         </tbody>
     </table>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
     {% if current_user.is_authenticated %}
     <a class="btn btn-success" href="/matric">Рассчитать персональную</a>
+    <a class="btn btn-success" href="/matricself">Получить характеристку</a>
     {% endif %}
 </div>
 </div>
