@@ -1,36 +1,118 @@
-<link rel="stylesheet" href="/static/css/style.css" type="text/css">
-
-h4 {
-    color: #CCCCCC;
+h1 {
+white-space: nowrap;
 }
 
-body { background: url('/static/img/image_56656e8f2835e0.54848351.jpg'); }
+h4 {
+color: #000000;
+}
+
+.redform {
+color: #ff0000;
+}
+
+.0form {
+margin-left: auto;
+margin-right: auto;
+}
+
+a {
+color: #f000f0;
+}
+
+.aform {
+margin-left: auto;
+margin-right: auto;
+max-width: 450px;
+background-color: #ccccff;
+border: 1px solid gray;
+border-radius: 5px;
+padding: 10px;
+}
+
+.bform {
+display: inline-block;
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background-color: #ccccff;
+border: 1px solid gray;
+border-radius: 5px;
+padding: 10px;
+}
 
 .auto_answer ul{
-    list-style: none;
-    padding-top: 10px;
+list-style: none;
+padding-top: 10px;
 }
 
 .auto_answer ul li {
-    font-size: 22px;
+font-size: 22px;
 }
 
-.login_title:before {
-    content:'';
+.line {
+display: inline;
+}
+
+.tdm1 {
+text-align: center;
+border: 3px solid black;
+width: 25%;
+font-weight: 600;
+}
+
+.tdm2 {
+border: 3px solid #666666;
+width: 25%;
+font-weight: 600;
+}
+
+.table1 {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table1 th,
+.table1 td {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.table1 thead th {
+  vertical-align: bottom;
+}
+
+.table1 tbody + tbody {
+}
+
+.bform {max-width: 100%;
+}
+
+.form-inline .form-control {
     display: inline-block;
-    position: relative;
-    width: 150px;
-    height: 50px;
-    background: url('/static/img/image_56656e8f2835e0.54848351.jpg');
+    width: 33%;
+    vertical-align: middle;
 }
 
+.btn-secondary {
+font-weight: 600;
+}
 
-        body { background: url('/static/img/image_56656e8f2835e0.54848351.jpg'); }
-        .login_title:before {
-        content:'';
-        display: inline-block;
-        position: relative;
-        width: 100px;
-        height: 50px;
-        background: url('/static/img/image_56656e8f2835e0.54848351.jpg');
-        }
+.txtm {
+font-size: 12px;
+color: #999999;
+}
+
+.txtt {
+font-size: 24px;
+text-align: center;
+}
+
+.txtx {
+font-size: 30px;
+text-align: center;
+}
+
+.txtb {
+border-top: 3px solid black;
+}

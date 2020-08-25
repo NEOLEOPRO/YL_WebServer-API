@@ -4,7 +4,6 @@
 <div class="container">
 <div class="row">
 <div class="col-12">
-<h1 class="0form">Регистрация</h1>
 <form class="aform" action="" method="post" novalidate>
     {{ form.csrf_token }}
     {{ form.hidden_tag() }}
@@ -30,24 +29,6 @@
         {{ form.rep_password.label }}<br>
         {{ form.rep_password(class="form-control", type="password") }}
         {% for error in form.rep_password.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.surname.label }}<br>
-        {{ form.surname(class="form-control") }}
-        {% for error in form.surname.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.name.label }}<br>
-        {{ form.name(class="form-control") }}
-        {% for error in form.name.errors %}
             <p class="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -80,7 +61,7 @@
             </p>
         {% endfor %}
     </p>
-    {{message}}
+    <p class="redform">{{message}}</p>
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
 </form>
 </div>

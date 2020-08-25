@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-12" align="center">
+    <div class="bform">
+        <h4>Дата рождения(дд мм гггг):</h4>
+        <form action="" method="post" novalidate>
+            {{ form.csrf_token }}
+            <p class="form-inline" >
+                {{ form.datee(class="form-control") }}
+                {{ form.monthe(class="form-control") }}
+                {{ form.agee(class="form-control") }}
+            </p>
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        </form>
+        <div class="redform">{{ message }}</div>
+    </div>
+    {% if portr != None %}
+    <table class="table1" width="90%">
+        <tbody>
+            <tr>
+                <td class="txtt" width="28%" colspan="2">Кармический<br>портрет</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.11</div>{{portr['p11']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.21</div>{{portr['p21']}}</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.9</div>{{portr['p9']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.10</div>{{portr['p10']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.16</div>{{portr['p16']}}</td>
+            </tr>
+            <tr>
+                <td width="14%" class="txtb">&nbsp;</td>
+                <td class="txtx txtb" width="14%"><div class="txtm">Поз.1</div>{{portr['p1']}}</td>
+                <td width="14%" class="txtb">&nbsp;</td>
+                <td class="txtx txtb" width="14%"><div class="txtm">Поз.2</div>{{portr['p2']}}</td>
+                <td width="14%" class="txtb">&nbsp;</td>
+                <td class="txtx txtb" width="14%"><div class="txtm">Поз.3</div>{{portr['p3']}}</td>
+                <td width="14%" class="txtb">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="txtt" width="28%" colspan="2">Базовый<br>портрет</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.4</div>{{portr['p4']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.5</div>{{portr['p5']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.7</div>{{portr['p7']}}</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.6</div>{{portr['p6']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.12</div>{{portr['p12']}}</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.8</div>{{portr['p8']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="txtt txtb" width="28%" colspan="2">Подсознание</td>
+                <td width="14%" class="txtb">&nbsp;</td>
+                <td class="txtx txtb" width="14%"><div class="txtm">Поз.A</div>{{portr['pA']}}</td>
+                <td width="42%" class="txtb" colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.B</div>{{portr['pB']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.C</div>{{portr['pC']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.D</div>{{portr['pD']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.E</div>{{portr['pE']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.F</div>{{portr['pF']}}</td>
+                <td width="14%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td class="txtx" width="14%"><div class="txtm">Поз.H</div>{{portr['pH']}}</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+                <td width="14%">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}

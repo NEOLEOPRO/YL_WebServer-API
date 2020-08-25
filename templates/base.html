@@ -7,56 +7,29 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
-    <style>
-        h4 { color: #000000; }
-        .redform { color: #ff0000; }
-        .0form {
-        margin-left: auto;
-        margin-right: auto;
-        }
-        a { color: #f000f0; }
-        .aform {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 450px;
-        background-color: #ccccff;
-        border: 1px solid gray;
-        border-radius: 5px;
-        padding: 10px;
-        }
-        .bform {
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 500px;
-        background-color: #ccccff;
-        border: 1px solid gray;
-        border-radius: 5px;
-        padding: 10px;
-        }
-        .auto_answer ul{
-        list-style: none;
-        padding-top: 10px;
-        }
-        .auto_answer ul li {
-        font-size: 22px;
-        }
-        .line { display: inline; }
-    </style>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
     <header class="w-100">
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h1 align="justify">Нумерология</h1>
+                    <h1 align="justify">{{ title }}</h1>
                     {% if current_user.is_authenticated %}
-                        <a class="btn btn-success" href="/logout">Выйти</a>
+                        <p class="m-0">
+                            <a class="btn btn-success" href="/logout">Выйти</a>
+                            <a class="btn btn-secondary" href="{{to}}">{{titleto}}</a>
+                        </p>
                     {% else %}
                         <p class="m-0">
                             <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
                             <a class="btn btn-success" href="/login">Войти</a>
-                            <a class="btn btn-success" href="/">На главную</a>
+                            {% if to != "" %}
+                                <a class="btn btn-secondary" href="{{to}}">{{titleto}}</a>
+                            {% else %}
+                                <a class="btn btn-secondary" href="/">Матрица</a>
+                                <a class="btn btn-secondary" href="/portrait">Портрет</a>
+                            {% endif %}
                         </p>
                     {% endif %}
                 </div>

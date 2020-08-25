@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-12" align="center">
+    <div class="bform">
+        <h4>Дата рождения(дд мм гггг):</h4>
+        <form action="/matriс" method="post">
+            {{ form.csrf_token }}
+            <p class="form-inline">
+                {{ form.datee(class="form-control") }}
+                {{ form.monthe(class="form-control") }}
+                {{ form.agee(class="form-control") }}
+            </p>
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        </form>
+        <div class="redform">{{ message }}</div>
+    </div>
+    <table class="table1">
+        <tbody>
+        <tr >
+            <td class="tdm1">
+                Характер<br>
+                {{ matr['char'] }}
+            </td>
+            <td class="tdm1">
+                Здоровье<br>
+                {{ matr['heal'] }}
+            </td>
+            <td class="tdm1">
+                Удача<br>
+                {{ matr['luck'] }}
+            </td>
+            <td class="tdm2" align="center">
+                Цель<br>
+                {{ matr['purp'] }}
+            </td>
+        </tr>
+        <tr>
+            <td class="tdm1">
+                Энергия<br>
+                {{ matr['power'] }}
+            </td>
+            <td class="tdm1">
+                Логика<br>
+                {{ matr['logic'] }}
+            </td>
+            <td class="tdm1">
+                Долг<br>
+                {{ matr['debt'] }}
+            </td>
+            <td class="tdm2" align="center">
+                Семья<br>
+                {{ matr['famil'] }}
+            </td>
+        </tr>
+        <tr>
+            <td class="tdm1">
+                Интерес<br>
+                {{ matr['intr'] }}
+            </td>
+            <td class="tdm1">
+                Труд<br>
+                {{ matr['work'] }}
+            </td>
+            <td class="tdm1">
+                Память<br>
+                {{ matr['mind'] }}
+            </td>
+            <td class="tdm2" align="center">
+                Привычки<br>
+                {{ matr['habit'] }}
+            </td>
+        </tr>
+        <tr>
+            <td class="tdm2" align="center">
+                Темперамент<br>
+                {{ matr['temp'] }}
+            </td>
+            <td class="tdm2" align="center">
+                Быт<br>
+                {{ matr['mofl'] }}
+            </td>
+            <td class="tdm2" align="center" colspan="2">
+                Число судьбы<br>
+                {{ matr['nofl'] }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% if current_user.is_authenticated %}
+    <a class="btn btn-success" href="/matriсself">Рассчитать персональную</a>
+    <a class="btn btn-success" href="/matriсharacter">Получить характеристку</a>
+    {% else %}
+    <div class="bform" align="center">
+        <label>Вы можете получить психологический портрет по кнопке вверху,<br>а также авторизироваться, чтобы получить характеристику по персональной матрице!</label> <br>
+    </div>
+    {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}
