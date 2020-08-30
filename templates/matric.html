@@ -90,11 +90,84 @@
         </tbody>
     </table>
     {% if current_user.is_authenticated %}
-    <a class="btn btn-success" href="/matriсself">Рассчитать персональную</a>
-    <a class="btn btn-success" href="/matriсharacter">Получить характеристку</a>
+    <a class="btn btn-success" href="/matriсharacter">Получить персональную характеристку</a>
     {% else %}
     <div class="bform" align="center">
         <label>Вы можете получить психологический портрет по кнопке вверху,<br>а также авторизироваться, чтобы получить характеристику по персональной матрице!</label> <br>
+    </div>
+    {% endif %}
+    {% if char %}
+    <div>
+        <table class="table1">
+            <tbody>
+            <tr>
+                <td>
+                    {% if char[0] %}
+                    {{ matr['char'] }}: {{ char[0] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[1] %}
+                    {{ matr['power'] }}: {{ char[1] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[2] %}
+                    {{ matr['intr'] }}: {{ char[2] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[3] %}
+                    {{ matr['heal'] }}: {{ char[3] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[4] %}
+                    {{ matr['logic'] }}: {{ char[4] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[5] %}
+                    {{ matr['work'] }}: {{ char[5] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[6] %}
+                    {{ matr['luck'] }}: {{ char[6] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[7] %}
+                    {{ matr['debt'] }}: {{ char[7] }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if char[8] %}
+                    {{ matr['mind'] }}: {{ char[8] }}
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="bform" align="center">
+        <label>Чтобы получить полную характеристику по персональной матрице с пояснениями вы можете обратиться за личной консультацией!</label> <br>
     </div>
     {% endif %}
 </div>

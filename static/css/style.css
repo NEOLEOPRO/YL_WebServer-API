@@ -90,8 +90,13 @@ font-weight: 600;
 
 .form-inline .form-control {
     display: inline-block;
-    width: 33%;
+    flex-flow: none;
+    max-width: 33%;
     vertical-align: middle;
+}
+
+.form-inline {
+    flex-flow: nowrap;
 }
 
 .btn-secondary {
@@ -115,4 +120,9 @@ text-align: center;
 
 .txtb {
 border-top: 3px solid black;
+}
+
+.comp {
+white-space: nowrap;
+display: inline-block;
 }
