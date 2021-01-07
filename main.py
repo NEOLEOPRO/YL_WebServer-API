@@ -258,11 +258,11 @@ def getchar(a):
 
 
 def getportrait(d, m, y, d1=None, m1=None, y1=None):
-    d = d % 22
-    y = sum([int(i) for i in str(y)]) % 22
+    d = d % (22 + int(d == 22))
+    y = sum([int(i) for i in str(y)]) % (22 + int(d == 22))
     if d1 and m1 and y1:
-        d1 = d1 % 22
-        y1 = sum([int(i) for i in str(y1)]) % 22
+        d1 = d1 % (22 + int(d == 22))
+        y1 = sum([int(i) for i in str(y1)]) % (22 + int(d == 22))
         p = {'p1': d, 'p2': m, 'p3': y, 'p4': d + m, 'p5': m + y, 'p6': d + 2 * m + y, 'p7': d + m + y, 'p8': d + 3 * m + y, 'p1+': d1, 'p2+': m1, 'p3+': y1, 'p4+': d1 + m1, 'p5+': m1 + y1, 'p6+': d1 + 2 * m1 + y1, 'p7+': d1 + m1 + y1, 'p8+': d1 + 3 * m1 + y1}
         p['p1c'] = p['p1'] + p['p1+']
         p['p2c'] = p['p2'] + p['p2+']
@@ -385,5 +385,5 @@ def session_test():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
-    #app.run(port=8080, host='127.0.0.1')
+    #app.run(host='0.0.0.0', port=port)
+    app.run(port=8080, host='127.0.0.1')
