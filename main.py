@@ -259,7 +259,7 @@ def getchar(a):
 
 def getportrait(d, m, y, d1=None, m1=None, y1=None):
     d = d % (22 + int(d == 22))
-    y = sum([int(i) for i in str(y)]) % 22
+    y = sum([int(i) for i in str(y)])
     if d1 and m1 and y1:
         d1 = d1 % (22 + int(d == 22))
         y1 = sum([int(i) for i in str(y1)]) % 22
