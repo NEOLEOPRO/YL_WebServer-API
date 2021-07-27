@@ -259,7 +259,7 @@ def getchar(a):
 
 def getportrait(d, m, y, d1=None, m1=None, y1=None):
     d = d % (22 + int(d == 22))
-    y = sum([int(i) for i in str(y)])
+    y = sum([int(i) for i in str(y)]) % 22
     if d1 and m1 and y1:
         d1 = d1 % (22 + int(d == 22))
         y1 = sum([int(i) for i in str(y1)]) % 22
@@ -275,7 +275,7 @@ def getportrait(d, m, y, d1=None, m1=None, y1=None):
         for i in p:
             p[i] = numb[str(p[i] % 22)]
     else:
-        p = {'p1': d, 'p2': m, 'p3': y, 'p4': d + m, 'p5': m + y, 'p6': d + 2 * m + y, 'p7': d + m + y, 'p8': d + 3 * m + y, 'p9': abs(d - m), 'p10': abs(m - y), 'p11': abs(abs(d - m) - abs(m - y) + 22 * (int(d == m) - int(y == m))), 'p12': 2 * d + 4 * m + 2 * y, 'p16': 2 * d + 2 * m + 2 * y, 'p21': 3 * d + 5 * m + 3 * y, 'pA': 2 * d + m, 'pB': d + 2 * m, 'pC': 2 * m + y, 'pD': 2 * y + m, 'pE': 2 * d + 3 * m + y, 'pF': d + 3 * m + 2 * y, 'pH': 4 * d + 4 * m + y}
+        p = {'p1': d, 'p2': m, 'p3': y, 'p4': d + m, 'p5': m + y, 'p6': d + 2 * m + y, 'p7': d + m + y, 'p8': d + 3 * m + y, 'p9': abs(d - m), 'p10': abs(m - y - 22 * (y == 0)), 'p11': abs(abs(d - m) - abs(m - y) + 22 * (int(d == m) - int(y == m))), 'p12': 2 * d + 4 * m + 2 * y, 'p16': 2 * d + 2 * m + 2 * y, 'p21': 3 * d + 5 * m + 3 * y, 'pA': 2 * d + m, 'pB': d + 2 * m, 'pC': 2 * m + y, 'pD': 2 * y + m, 'pE': 2 * d + 3 * m + y, 'pF': d + 3 * m + 2 * y, 'pH': 4 * d + 4 * m + y}
         for i in p:
             p[i] = numb[str(p[i] % 22)]
     return p
